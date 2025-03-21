@@ -35,7 +35,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Jean Doe
 
-<img src="images/davidfoo07.png" width="200px">
+<img src="images/davidfoo07.jpeg" width="200px">
 
 [[github](http://github.com/davidfoo07)]
 
