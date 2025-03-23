@@ -24,6 +24,7 @@ import seedu.address.logic.commands.ViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.ProfileContainsKeywordsPredicate;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
 
@@ -53,7 +54,10 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_view() throws Exception {
-        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD) instanceof ViewCommand);
+        List<String> keywords = Arrays.asList("S1234567E", "S2217855F", "S7628910Y");
+        ViewCommand command = (ViewCommand) parser.parseCommand(
+                ViewCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
+        assertEquals(new ViewCommand(new ProfileContainsKeywordsPredicate(keywords)), command);
     }
 
     // Xiangyun - i commented this out since the edit parser needs to be edited first

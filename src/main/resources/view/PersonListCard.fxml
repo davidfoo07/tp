@@ -27,7 +27,11 @@
         </Label>
         <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
       </HBox>
-      <FlowPane fx:id="tags" />
+      <HBox fx:id="tagBox" spacing="3">
+        <FlowPane fx:id="department" prefWidth="80" />
+        <FlowPane fx:id="employmentType" prefWidth="80" />
+        <FlowPane fx:id="jobTitle" prefWidth="80" />
+      </HBox>
       <HBox spacing="5">
         <Label text="Nric:" styleClass="cell_header_label" />
         <Label fx:id="nric" styleClass="cell_small_label" text="\$nric" />

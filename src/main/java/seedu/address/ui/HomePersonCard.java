@@ -9,19 +9,11 @@ import seedu.address.model.person.Person;
 import seedu.address.model.tag.Tag;
 
 /**
- * An UI component that displays information of a {@code Person}.
+ * An UI component that displays information of a {@code Person} in the Home Screen.
  */
-public class PersonCard extends UiPart<Region> {
+public class HomePersonCard extends UiPart<Region> {
 
-    private static final String FXML = "PersonListCard.fxml";
-
-    /**
-     * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
-     * As a consequence, UI elements' variable names cannot be set to such keywords
-     * or an exception will be thrown by JavaFX during runtime.
-     *
-     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
-     */
+    private static final String FXML = "HomePersonCard.fxml";
 
     public final Person person;
 
@@ -32,21 +24,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Label phone;
-    @FXML
-    private Label address;
-    @FXML
-    private Label email;
-    @FXML
     private Label nric;
-    @FXML
-    private Label gender;
-    @FXML
-    private Label dob;
-    @FXML
-    private Label dateOfJoining;
-    @FXML
-    private Label nationality;
     @FXML
     private HBox tagBox;
     @FXML
@@ -57,21 +35,14 @@ public class PersonCard extends UiPart<Region> {
     private FlowPane jobTitle;
 
     /**
-     * Creates a {@code PersonCode} with the given {@code Person} and index to display.
+     * Creates a {@code HomePersonCard} with the given {@code Person} and index to display.
      */
-    public PersonCard(Person person, int displayedIndex) {
+    public HomePersonCard(Person person, int displayedIndex) {
         super(FXML);
         this.person = person;
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
-        phone.setText(person.getPhone().value);
-        address.setText(person.getAddress().value);
         nric.setText(person.getNric().value);
-        gender.setText(person.getGender().value);
-        dob.setText(person.getDob().value);
-        dateOfJoining.setText(person.getDateOfJoining().value);
-        nationality.setText(person.getNationality().value);
-        email.setText(person.getEmail().value);
 
         Tag tag = person.getTag();
 
@@ -99,4 +70,5 @@ public class PersonCard extends UiPart<Region> {
     public FlowPane getJobTitle() {
         return jobTitle;
     }
+
 }

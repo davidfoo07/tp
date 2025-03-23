@@ -31,6 +31,7 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
+    private HomePersonCardPanel homePersonCardPanel;
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
@@ -43,6 +44,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane personListPanelPlaceholder;
+
+    @FXML
+    private StackPane homePersonCardPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -110,8 +114,11 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        //personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+        //personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+
+        homePersonCardPanel = new HomePersonCardPanel(logic.getFilteredPersonList());
+        homePersonCardPanelPlaceholder.getChildren().add(homePersonCardPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -122,6 +129,16 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
+
+    private void switchToPersonListView() {
+        // Remove existing homePersonCardPanel
+        homePersonCardPanelPlaceholder.getChildren().clear();
+
+        // Load PersonListPanel with the filtered list (already filtered by ViewCommand)
+        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+        homePersonCardPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+    }
+
 
     /**
      * Sets the default size based on {@code guiSettings}.
@@ -167,6 +184,10 @@ public class MainWindow extends UiPart<Stage> {
         return personListPanel;
     }
 
+    public HomePersonCardPanel getHomePersonCardPanel() {
+        return homePersonCardPanel;
+    }
+
     /**
      * Executes the command and returns the result.
      *
@@ -184,6 +205,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+            if (commandText.toLowerCase().startsWith("view ")) {
+                switchToPersonListView();
             }
 
             return commandResult;
