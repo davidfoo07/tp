@@ -74,11 +74,14 @@ public class NoteCommand extends Command {
      * {@code personToEdit}.
      */
     private String generateSuccessMessage(Person personToEdit) {
-        String message = note.equals(new Note(" "))
-                && !(personToEdit.getNote().equals(new Note(" ")))
-                ? MESSAGE_DELETE_NOTE_SUCCESS : MESSAGE_ADD_NOTE_SUCCESS;
-        return message + " Name: " + personToEdit.getName().toString() + "  Nric: "
-                + personToEdit.getNric().toString() + "  Note: " + note.toString();
+        if (note.equals(new Note(" "))
+                && !(personToEdit.getNote().value.isEmpty())) {
+            return MESSAGE_DELETE_NOTE_SUCCESS + " Name: " + personToEdit.getName().toString()
+                + "  Nric: " + personToEdit.getNric().toString();
+        } else {
+            return MESSAGE_ADD_NOTE_SUCCESS + " Name: " + personToEdit.getName().toString()
+                + "  Nric: " + personToEdit.getNric().toString() + "  Note: " + note.toString();
+        }
     }
 
     @Override
