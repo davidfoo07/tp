@@ -55,10 +55,15 @@ The current version of the HRelper is a prototype designed to showcase its core 
 1. Copy the file to the folder you want to use as the _home folder_ for HRelper.
 
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar "[CS2103T-F14-02][HRelper]".jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. 
+   A GUI similar to the below should appear in a few seconds.
+   
 ![IntroPic](images/IntroPic.png) <br>
 <br>
-    This is how the app should look like after containing some data:![Ui](images/Ui.png)
+    This is how the app should look like after containing some data:
+
+![Ui](images/Ui.png)
+
+If there is no sample data, it could be where under the same directory of this jar file, there is a data file and inside there is a addressbook.json file. For eg: ./data/addressbook.json, please remove it for sample data to load. 
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -207,43 +212,46 @@ Filters the contacts by their department, job title, or employment type.
 #### `findByDepartment`
 Format: `findByDepartment KEYWORD`
 
-* Finds contacts who belong to departments that match the specified keyword
-* Search is case-insensitive (e.g., "finance" will match "Finance")
-* Accepts department short forms (e.g., "HR" will match "Human Resources")
-* For partial matches, keyword must contain at least 3 consecutive letters of the department name
-* Only alphabetic characters and the '&' symbol are allowed in department search terms
+* Finds contacts who belong to departments that match the specified keyword.
+* Search is case-insensitive (e.g., "finance" will match "Finance").
+* Accepts department short forms (e.g., "HR" will match "Human Resources").
+* For partial matches, keyword must contain at least 3 consecutive letters of the department name.
+* Only alphabetic characters and the '&' symbol are allowed in department search terms.
 
 Examples:
-* `findByDepartment Finance` returns all contacts in the Finance department
-* `findByDepartment HR` returns all contacts in the Human Resources department
-* `findByDepartment Inf` returns all contacts in the Information Technology department
-* `findByDepartment Tec` returns all contacts in the Information Technology department
+* `findByDepartment Finance` returns all contacts in the Finance department.
+* `findByDepartment HR` returns all contacts in the Human Resources department.
+* `findByDepartment Inf` returns all contacts in the Information Technology department.
+* `findByDepartment Tec` returns all contacts in the Information Technology department.
 
 #### `findByJobTitle`
 Format: `findByJobTitle KEYWORD`
 
-* Finds contacts whose job titles match the specified keyword
-* Search is case-insensitive
-* Will match if the keyword matches a full word in the job title
-* For partial matches, keyword must contain at least 3 consecutive letters of a word in the job title
-* Only alphabetic characters are allowed in job title search terms
+* Finds contacts whose job titles match the specified keyword.
+* Search is case-insensitive.
+* Will match if the keyword matches a full word in the job title.
+* For partial matches, keyword must contain at least 3 consecutive letters of a word in the job title.
+* Only alphabetic characters are allowed in job title search terms.
 
 Examples:
-* `findByJobTitle Engineer` returns all engineers
-* `findByJobTitle Dev` returns all developers
-* `findByJobTitle Coord` returns all coordinators
+* `findByJobTitle Engineer` returns all engineers.
+* `findByJobTitle Dev` returns all developers.
+* `findByJobTitle Coord` returns all coordinators.
 
 #### `findByEmploymentType`
 Format: `findByEmploymentType EMPLOYMENT_TYPE`
 
-* Finds contacts with the specified employment type
-* Search must use exact employment type terms or their common variations
-* Only alphabetic characters and hyphens are allowed in search terms
+* Finds contacts with the specified employment type.
+* Search is case-insensitive.
+* Will match if the keyword matches a full word in the job title.
+* For partial matches, keyword must contain at least 3 consecutive letters of a word in the job title.
 
 Examples:
-* `findByEmploymentType Part-Time` returns all part-time employees
-* `findByEmploymentType Contract` returns all contractors
-* `findByEmploymentType Full-Time` returns all full-time employees (e.g shown below)
+* `findByEmploymentType Part-Time` returns all part-time employees.
+* `findByEmploymentType part` returns all part-time employees.
+* `findByEmploymentType Full-Time` returns all full-time employees (e.g shown below).
+* `findByEmploymentType ful` returns all full-time employees.
+  
 ![findByEmploymentType](images/findByEmploymentType.png)
 
 ### Deleting a person : `delete`
