@@ -32,7 +32,7 @@ public class NoteCommand extends Command {
             + "Likes to swim.";
 
     public static final String MESSAGE_ADD_NOTE_SUCCESS = "Added note to Person: ";
-    public static final String MESSAGE_DELETE_NOTE_SUCCESS = "Removed note from Person: ";
+    public static final String MESSAGE_DELETE_NOTE_SUCCESS = "Note is empty now for Person: ";
 
     private final Index index;
     private ProfileContainsKeywordsPredicate predicate;
