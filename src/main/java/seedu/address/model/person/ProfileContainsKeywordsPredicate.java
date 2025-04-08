@@ -2,8 +2,8 @@ package seedu.address.model.person;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import seedu.address.commons.util.ToStringBuilder;
 
@@ -13,6 +13,11 @@ import seedu.address.commons.util.ToStringBuilder;
 public class ProfileContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> keywords;
 
+    /**
+     * Constructs a ProfileContainsKeywordsPredicate with the given keywords.
+     *
+     * @param keywords The list of keywords to match against.
+     */
     public ProfileContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords.stream()
                 .map(String::toLowerCase)
@@ -26,7 +31,7 @@ public class ProfileContainsKeywordsPredicate implements Predicate<Person> {
         String[] personWords = fullNameLower.split("\\s+");
 
         // Check if ALL keywords match as full words
-        return keywords.stream().allMatch(keyword -> 
+        return keywords.stream().allMatch(keyword ->
             Arrays.stream(personWords).anyMatch(word -> word.equals(keyword))
         );
     }

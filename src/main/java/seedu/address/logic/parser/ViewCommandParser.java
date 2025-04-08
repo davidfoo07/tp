@@ -18,12 +18,11 @@ public class ViewCommandParser implements Parser<ViewCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public ViewCommand parse(String args) throws ParseException {
-        if (args == null || args.trim().isEmpty()) {
+        String trimmedArgs = args.trim();
+        if (trimmedArgs.isEmpty()) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
         }
-
-        String trimmedArgs = args.trim();
 
         // Check if input contains only letters and spaces (allow multiple words)
         if (!trimmedArgs.matches("^[a-zA-Z\\s]+$")) {

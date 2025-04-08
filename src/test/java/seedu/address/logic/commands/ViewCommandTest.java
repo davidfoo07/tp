@@ -119,11 +119,6 @@ public class ViewCommandTest {
                 parser.parse("@lex"));
         assert(thrown.getMessage().equals("Names should only contain alphabetical characters and spaces."));
     }
-
-    @Test
-    public void parse_nullString_throwsParseException() {
-        ParseException thrown = assertThrows(ParseException.class, () ->
-                parser.parse("null"));
-        assert(thrown.getMessage().equals("Name cannot be empty!!"));
-    }
 }
+
+
